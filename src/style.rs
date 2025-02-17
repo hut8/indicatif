@@ -311,6 +311,12 @@ impl ProgressStyle {
                             "per_sec" => buf
                                 .write_fmt(format_args!("{}/s", HumanFloatCount(state.per_sec())))
                                 .unwrap(),
+                            "per_sec_int" => buf
+                                .write_fmt(format_args!(
+                                    "{}/s",
+                                    HumanCount(state.per_sec().round() as u64)
+                                ))
+                                .unwrap(),
                             "bytes_per_sec" => buf
                                 .write_fmt(format_args!("{}/s", HumanBytes(state.per_sec() as u64)))
                                 .unwrap(),
